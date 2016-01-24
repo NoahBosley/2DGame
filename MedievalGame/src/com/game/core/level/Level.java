@@ -56,8 +56,8 @@ public class Level {
 	public boolean tileCollision(double x, double y, double xa, double ya, int size) {
 		boolean solid = false;
 		for (int c = 0; c < 4; c++) {
-			double xt = (((int) x + (int) xa) + c % 2 * size) / 16;
-			double yt = (((int) y + (int) ya) + c / 2 * size) / 16;
+			double xt = (((int) x + (int) xa) + c % 2 * size / 2 - 5) / 16;
+			double yt = (((int) y + (int) ya) + c / 2 * size / 2 + 5) / 16;
 			if (getTile((int) xt, (int) yt).isSolid()) solid = true;
 		}
 		return solid;

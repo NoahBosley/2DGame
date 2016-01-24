@@ -15,6 +15,7 @@ import com.game.core.input.Mouse;
 import com.game.core.level.Level;
 import com.game.core.level.TileCoordinate;
 import com.game.render.Screen;
+import com.game.render.Sprite;
 
 public class Game extends Canvas implements Runnable {
 
