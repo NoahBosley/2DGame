@@ -1,9 +1,7 @@
 package com.game.core.entity.mob;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.game.core.entity.Entity;
+import com.game.core.entity.particle.Particle;
 import com.game.core.entity.projectile.Projectile;
 import com.game.core.entity.projectile.WizardProjectile;
 import com.game.render.Screen;
@@ -38,7 +36,7 @@ public abstract class Mob extends Entity {
 	
 	protected void shoot(int x, int y, double dir) {
 		Projectile p = new WizardProjectile(x, y, dir);
-		level.addProjectile(p);
+		level.add(p);
 	}
 	
 	private boolean collision(int xa, int ya) {

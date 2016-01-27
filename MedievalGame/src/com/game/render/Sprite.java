@@ -38,6 +38,9 @@ public class Sprite {
 	public static Sprite player_back_1 = new Sprite(32, 2, 6, SpriteSheet.evironmentSheet);
 	public static Sprite player_back_2 = new Sprite(32, 2, 7, SpriteSheet.evironmentSheet);
 	
+	/** PARTILE SPRITES **/
+	public static Sprite particle_normal = new Sprite(3, 0xAAAAAA);
+	
 	public Sprite(int size, int x, int y, SpriteSheet sheet) {
 		SIZE = size;
 		this.width = size;

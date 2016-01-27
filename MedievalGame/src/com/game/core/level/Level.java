@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.game.core.entity.Entity;
+import com.game.core.entity.particle.Particle;
 import com.game.core.entity.projectile.Projectile;
+import com.game.core.entity.spawner.Spawner;
 import com.game.core.level.tile.Tile;
 import com.game.render.Screen;
 
@@ -16,6 +18,7 @@ public class Level {
 	
 	private List<Entity> entities = new ArrayList<Entity>();
 	private List<Projectile> projectiles = new ArrayList<Projectile>();
+	private List<Particle> particles = new ArrayList<Particle>();
 	
 	public static Level spawnLevel = new SpawnLevel("start_level.png");
 	
@@ -43,6 +46,9 @@ public class Level {
 		}
 		for (int i = 0; i < projectiles.size(); i++) {
 			projectiles.get(i).update();
+		}
+		for (int i = 0; i < particles.size(); i++) {
+			particles.get(i).update();
 		}
 	}
 	
@@ -81,15 +87,20 @@ public class Level {
 		for (int i = 0; i < projectiles.size(); i++) {
 			projectiles.get(i).render(screen);
 		}
+		for (int i = 0; i < particles.size(); i++) {
+			particles.get(i).render(screen);
+		}
 	}
 	
 	public void add(Entity e) {
-		entities.add(e);
-	}
-	
-	public void addProjectile(Projectile p) {
-		p.init(this);
-		projectiles.add(p);
+		e.init(this);
+		if (e instanceof Particle)  {			
+			particles.add((Particle) e);
+		} else if (e instanceof Projectile) {
+			projectiles.add((Projectile) e);			
+		} else {
+			entities.add(e); 
+		}
 	}
 	
 	public Tile getTile(int x, int y) {

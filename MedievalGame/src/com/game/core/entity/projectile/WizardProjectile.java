@@ -1,5 +1,6 @@
 package com.game.core.entity.projectile;
 
+import com.game.core.entity.spawner.Spawner;
 import com.game.render.Screen;
 import com.game.render.Sprite;
 
@@ -19,7 +20,10 @@ public class WizardProjectile extends Projectile {
 	}
 	
 	public void update() {
-		if (level.tileCollision(x, y, nx, ny, 7)) remove();
+		if (level.tileCollision(x, y, nx, ny, 7)) {
+			level.add(new Spawner((int)x, (int)y, Spawner.Type.PARTICLE, 50, level));
+			remove();
+		}
 		move();
 	}
 	
